@@ -1,0 +1,95 @@
+{
+  "restaurante": "Inka Bistro Cusco",
+  "config": {
+    "nombre": "Inka Bistro Cusco",
+    "eslogan": "Cusco • Gourmet",
+    "logo": "🍽️",
+    "whatsapp": "51969773064",
+    "yapePhone": "+51 987 654 321",
+    "titular": "INKA BISTRO CUSCO E.I.R.L.",
+    "exchangeRateUSD": 3.75
+  },
+  "productos": [
+    {
+      "id": "dish-1791769983964",
+      "category": "mains",
+      "precioPEN": 35,
+      "precio": 35,
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+      "posterUrl": "https://images.unsplash.com/photo-1544025162-d76694265947?w=800",
+      "i18n": {
+        "es": {
+          "name": "Saltado",
+          "desc": "Papas fritas con carne picada y arroz"
+        },
+        "en": {
+          "name": "",
+          "desc": ""
+        },
+        "fr": {
+          "name": "",
+          "desc": ""
+        },
+        "pt": {
+          "name": "",
+          "desc": ""
+        }
+      },
+      "disponible": true
+    },
+    {
+      "id": "dish-1791770040831",
+      "category": "mains",
+      "precioPEN": 35,
+      "precio": 35,
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+      "posterUrl": "https://images.unsplash.com/photo-1544025162-d76694265947?w=800",
+      "i18n": {
+        "es": {
+          "name": "Aji de gallina",
+          "desc": "Gallina al hilo semi picante con papa sancochada y arroz"
+        },
+        "en": {
+          "name": "",
+          "desc": ""
+        },
+        "fr": {
+          "name": "",
+          "desc": ""
+        },
+        "pt": {
+          "name": "",
+          "desc": ""
+        }
+      },
+      "disponible": true
+    },
+    {
+      "id": "dish-1791820779638",
+      "category": "mains",
+      "precioPEN": 35,
+      "precio": 35,
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+      "posterUrl": "https://images.unsplash.com/photo-1544025162-d76694265947?w=800",
+      "i18n": {
+        "es": {
+          "name": "Cuy al horno",
+          "desc": "Nutritivo"
+        },
+        "en": {
+          "name": "",
+          "desc": ""
+        },
+        "fr": {
+          "name": "",
+          "desc": ""
+        },
+        "pt": {
+          "name": "",
+          "desc": ""
+        }
+      },
+      "disponible": true
+    }
+  ]
+}

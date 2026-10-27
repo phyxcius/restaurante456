@@ -1,0 +1,59 @@
+<?php
+// buscar_dni.php
+header('Content-Type: application/json');
+header('Access-Control-Allow-Origin: *');
+
+if (!isset($_GET['dni'])) {
+    echo json_encode(['success' => false, 'message' => 'Falta el parámetro DNI.']);
+    exit;
+}
+
+$dni = trim($_GET['dni']);
+
+if (strlen($dni) !== 8 || !is_numeric($dni)) {
+    echo json_encode(['success' => false, 'message' => 'DNI inválido (debe tener 8 dígitos).']);
+    exit;
+}
+
+$token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImVkd2lub2JsaXRhc3ViYWxkZUBnbWFpbC5jb20iLCJqdGkiOiIxNzExZGRjNTc5M2ZhYjQ0In0.h1PcqQHzHBK6abr7ZGVkMeSTOSN49BWOWHzB7wpIDw8";
+$url = "https://api.apis.net.pe/v2/reniec/dni?numero=" . $dni . "&token=" . $token;
+
+$ch = curl_init();
+curl_setopt_array($ch, array(
+    CURLOPT_URL => $url,
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_SSL_VERIFYPEER => false,
+    CURLOPT_TIMEOUT => 5,
+    CURLOPT_HTTPHEADER => array(
+        "Accept: application/json"
+    ),
+));
+
+$response = curl_exec($ch);
+$httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+$curlError = curl_error($ch);
+curl_close($ch);
+
+if ($curlError) {
+    echo json_encode(['success' => false, 'message' => 'Error cURL: ' . $curlError]);
+    exit;
+}
+
+if ($httpCode === 200 && $response) {
+    $datos = json_decode($response, true);
+    if (isset($datos['nombres']) && !empty($datos['nombres'])) {
+        $nombresCompletos = trim($datos['nombres'] . ' ' . ($datos['apellidoPaterno'] ?? '') . ' ' . ($datos['apellidoMaterno'] ?? ''));
+        echo json_encode([
+            'success' => true,
+            'nombres_completos' => $nombresCompletos
+        ]);
+        exit;
+    }
+}
+
+// Si la API externa no responde o da error, enviamos el mensaje devuelto
+echo json_encode([
+    'success' => false,
+    'message' => 'No se encontraron datos en RENIEC (HTTP ' . $httpCode . ').'
+]);
+?>
